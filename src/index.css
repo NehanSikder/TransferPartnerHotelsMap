@@ -17,7 +17,7 @@ body {
 }
 
 .container {
-  max-width: 880px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 32px 20px;
 }
@@ -114,3 +114,44 @@ select {
   text-decoration: none;
 }
 .hotel-name { font-weight: 600; }
+
+/* Map + list side by side */
+.results-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .results-grid { grid-template-columns: 1fr; }
+}
+
+.map-pane { position: sticky; top: 16px; }
+.map {
+  height: 70vh;
+  min-height: 420px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+/* Leaflet popup readability on dark theme */
+.leaflet-popup-content { color: #111; }
+
+/* Custom pin (divIcon) */
+.map-pin {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--accent);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+.map-pin.active {
+  background: #ff5a5f;
+  width: 22px;
+  height: 22px;
+  margin: -3px 0 0 -3px;
+  z-index: 1000;
+}

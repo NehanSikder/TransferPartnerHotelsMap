@@ -2,8 +2,10 @@ import { useState } from 'react'
 import CardSelector from './components/CardSelector.jsx'
 import CitySearch from './components/CitySearch.jsx'
 import HotelList from './components/HotelList.jsx'
+import { MapView } from './map/index.js'
 import { resolveProgramIds, programName } from './domain/resolve.js'
 import { getHotelProvider } from './providers/index.js'
+import cities from './data/cities.json'
 
 const provider = getHotelProvider()
 
@@ -11,6 +13,7 @@ export default function App() {
   const [cardIds, setCardIds] = useState([])
   const [cityKey, setCityKey] = useState('')
   const [hotels, setHotels] = useState(null)
+  const [center, setCenter] = useState(null)
   const [loading, setLoading] = useState(false)
   const [activeId, setActiveId] = useState(null)
 
@@ -21,6 +24,8 @@ export default function App() {
     setLoading(true)
     const results = await provider.search({ cityKey, programIds })
     setHotels(results)
+    const c = cities[cityKey]
+    setCenter(c ? { lat: c.lat, lng: c.lng } : null)
     setLoading(false)
   }
 
@@ -52,12 +57,23 @@ export default function App() {
       {hotels && (
         <section className="results">
           <h2>{hotels.length} hotel{hotels.length === 1 ? '' : 's'}</h2>
-          <HotelList
-            hotels={hotels}
-            activeId={activeId}
-            onHover={setActiveId}
-            onSelect={setActiveId}
-          />
+          <div className="results-grid">
+            <div className="map-pane">
+              <MapView
+                center={center}
+                hotels={hotels}
+                activeId={activeId}
+                onHover={setActiveId}
+                onSelect={setActiveId}
+              />
+            </div>
+            <HotelList
+              hotels={hotels}
+              activeId={activeId}
+              onHover={setActiveId}
+              onSelect={setActiveId}
+            />
+          </div>
         </section>
       )}
     </main>
