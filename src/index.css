@@ -4,140 +4,215 @@
   --text: #e8eaed;
   --muted: #9aa0a6;
   --accent: #4f8cff;
-  --border: #262a33;
+  --border: #2a2f3a;
+  --glass: rgba(15, 17, 21, 0.86);
+  --solid: rgba(15, 17, 21, 0.96);
+  --ls-label: 0.06em;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 * { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 32px 20px;
-}
-
-h1 { margin: 0 0 4px; font-size: 1.7rem; }
-.tagline { color: var(--muted); margin: 0 0 24px; }
+html, body, #root { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); }
 .muted { color: var(--muted); }
 
-.card-list {
+/* App shell: map fills the entire background; sidebar floats over it */
+.app { position: relative; height: 100vh; overflow: hidden; }
+
+.map-area { position: absolute; inset: 0; }
+.map { position: absolute; inset: 0; height: 100%; }
+
+/* ---- Floating left sidebar (glass header + solid list) ---- */
+.sidebar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  bottom: auto;
+  width: 380px;
+  max-height: calc(100vh - 24px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
+  z-index: 500;
+}
+
+/* Search header — translucent glass over the map */
+.sidebar-search {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 16px 16px;
+  background: var(--glass);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border-bottom: 1px solid var(--border);
+}
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .sidebar-search { background: var(--solid); }
+}
+
+.sidebar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-head strong {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+/* Section labels — the typographic dividers */
+.field-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+/* Cards disclosure */
+.card-disclosure summary {
   list-style: none;
-  padding: 0;
-  display: grid;
-  gap: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0;
 }
+.card-disclosure summary::-webkit-details-marker { display: none; }
+.card-disclosure[open] .card-grid { margin-top: 10px; }
+.disclosure-hint { font-size: 0.78rem; color: var(--muted); }
 
-.card-list li {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
-}
-
-.selector {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  margin: 0 0 16px;
-  padding: 12px 16px 16px;
-}
-.selector legend { padding: 0 6px; color: var(--muted); font-size: 0.85rem; }
-
-.card-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.card-grid { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 8px 14px;
+  padding: 6px 12px;
   cursor: pointer;
   user-select: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
 }
-.chip.on { border-color: var(--accent); background: #1d2738; }
+.chip.on { border-color: var(--accent); background: #1d2738; font-weight: 600; }
 .chip input { accent-color: var(--accent); }
-.chip small { font-size: 0.72rem; }
 
+.selector-compact { display: flex; }
 select {
   background: var(--panel);
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 1rem;
-  min-width: 240px;
+  padding: 9px 12px;
+  font-size: 0.875rem;
+  width: 100%;
 }
 
 .programs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.reaches-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
 .pill {
   background: #1d2738;
   border: 1px solid var(--accent);
   color: var(--text);
   border-radius: 999px;
   padding: 2px 10px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
-.search-btn {
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 1rem;
+/* Results — kept near-solid for legible scrolling over the map */
+.sidebar-results {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--solid);
+}
+.list-head {
+  flex: 0 0 auto;
+  padding: 12px 16px;
+  font-size: 0.6875rem;
   font-weight: 600;
-  cursor: pointer;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
 }
-.search-btn:disabled { opacity: 0.45; cursor: not-allowed; }
-
-.results { margin-top: 24px; }
-.hotel-list { list-style: none; padding: 0; display: grid; gap: 8px; }
-.hotel-row {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+.hotel-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  display: grid;
+  gap: 8px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 }
+.hotel-row { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; }
 .hotel-row.active { border-color: var(--accent); }
 .hotel-row a {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 12px 14px;
   color: var(--text);
   text-decoration: none;
 }
-.hotel-name { font-weight: 600; }
+.hotel-name { font-size: 0.875rem; font-weight: 600; }
+.hotel-row .muted { font-size: 0.78rem; }
 
-/* Map + list side by side */
-.results-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 16px;
-  align-items: start;
+/* ---- Collapse / reopen controls ---- */
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
 }
-@media (max-width: 760px) {
-  .results-grid { grid-template-columns: 1fr; }
-}
+.icon-btn:hover { color: var(--text); }
 
-.map-pane { position: sticky; top: 16px; }
-.map {
-  height: 70vh;
-  min-height: 420px;
-  border-radius: 10px;
+.sidebar-reopen {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 500;
+  background: var(--glass);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  color: var(--text);
   border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
-/* Leaflet popup readability on dark theme */
+/* ---- Leaflet popup + custom pin (dark) ---- */
 .leaflet-popup-content { color: #111; }
-
-/* Custom pin (divIcon) */
 .map-pin {
   display: block;
   width: 16px;
@@ -146,7 +221,7 @@ select {
   transform: rotate(-45deg);
   background: var(--accent);
   border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 .map-pin.active {
   background: #ff5a5f;
@@ -154,4 +229,16 @@ select {
   height: 22px;
   margin: -3px 0 0 -3px;
   z-index: 1000;
+}
+
+/* ---- Mobile: float the panel across the top, map behind ---- */
+@media (max-width: 760px) {
+  .sidebar {
+    left: 8px;
+    right: 8px;
+    top: 8px;
+    bottom: auto;
+    width: auto;
+    max-height: calc(100vh - 16px);
+  }
 }

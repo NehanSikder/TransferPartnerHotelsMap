@@ -39,6 +39,7 @@ export default function LeafletMap({
       center={[start.lat, start.lng]}
       zoom={center ? zoom : 4}
       scrollWheelZoom
+      zoomControl={false}
       className="map"
     >
       <TileLayer
