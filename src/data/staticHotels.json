@@ -1,0 +1,18 @@
+[
+  { "id": "sf-grand-hyatt", "name": "Grand Hyatt San Francisco", "programId": "hyatt", "city": "san francisco", "lat": 37.7896, "lng": -122.4065, "rating": 4.5, "website": "https://www.hyatt.com/grand-hyatt/sfogh-grand-hyatt-san-francisco" },
+  { "id": "sf-hyatt-regency", "name": "Hyatt Regency San Francisco", "programId": "hyatt", "city": "san francisco", "lat": 37.7945, "lng": -122.3964, "rating": 4.4, "website": "https://www.hyatt.com/hyatt-regency/sforf-hyatt-regency-san-francisco" },
+  { "id": "sf-intercontinental", "name": "InterContinental San Francisco", "programId": "ihg", "city": "san francisco", "lat": 37.7818, "lng": -122.4055, "rating": 4.5, "website": "https://www.ihg.com/intercontinental/hotels/us/en/san-francisco/sfodt/hoteldetail" },
+  { "id": "sf-kimpton-buchanan", "name": "Kimpton Hotel Buchanan", "programId": "ihg", "city": "san francisco", "lat": 37.7857, "lng": -122.4324, "rating": 4.3, "website": "https://www.hotelbuchanan.com/" },
+  { "id": "sf-ritz-carlton", "name": "The Ritz-Carlton, San Francisco", "programId": "marriott", "city": "san francisco", "lat": 37.7924, "lng": -122.4078, "rating": 4.6, "website": "https://www.ritzcarlton.com/en/hotels/sanfrancisco" },
+  { "id": "sf-st-regis", "name": "The St. Regis San Francisco", "programId": "marriott", "city": "san francisco", "lat": 37.7858, "lng": -122.4011, "rating": 4.6, "website": "https://www.marriott.com/hotels/travel/sfoxr-the-st-regis-san-francisco/" },
+  { "id": "sf-hilton-union-square", "name": "Hilton San Francisco Union Square", "programId": "hilton", "city": "san francisco", "lat": 37.7857, "lng": -122.4106, "rating": 4.2, "website": "https://www.hilton.com/en/hotels/sfosfhh-hilton-san-francisco-union-square/" },
+  { "id": "sf-cambria", "name": "Cambria Hotel San Francisco", "programId": "choice", "city": "san francisco", "lat": 37.7825, "lng": -122.4102, "rating": 4.1, "website": "https://www.choicehotels.com/california/san-francisco/cambria-hotels/ca260" },
+
+  { "id": "ny-grand-hyatt", "name": "Grand Hyatt New York", "programId": "hyatt", "city": "new york", "lat": 40.7527, "lng": -73.9756, "rating": 4.3, "website": "https://www.hyatt.com/grand-hyatt/nycgh-grand-hyatt-new-york" },
+  { "id": "ny-park-hyatt", "name": "Park Hyatt New York", "programId": "hyatt", "city": "new york", "lat": 40.7656, "lng": -73.9787, "rating": 4.7, "website": "https://www.hyatt.com/park-hyatt/nycph-park-hyatt-new-york" },
+  { "id": "ny-intercontinental-barclay", "name": "InterContinental New York Barclay", "programId": "ihg", "city": "new york", "lat": 40.7558, "lng": -73.9722, "rating": 4.5, "website": "https://www.ihg.com/intercontinental/hotels/us/en/new-york/nycha/hoteldetail" },
+  { "id": "ny-ritz-central-park", "name": "The Ritz-Carlton New York, Central Park", "programId": "marriott", "city": "new york", "lat": 40.7651, "lng": -73.9762, "rating": 4.6, "website": "https://www.ritzcarlton.com/en/hotels/new-york-central-park" },
+  { "id": "ny-hilton-midtown", "name": "New York Hilton Midtown", "programId": "hilton", "city": "new york", "lat": 40.7626, "lng": -73.9799, "rating": 4.1, "website": "https://www.hilton.com/en/hotels/nycnhh-new-york-hilton-midtown/" },
+  { "id": "ny-wyndham-new-yorker", "name": "The New Yorker, A Wyndham Hotel", "programId": "wyndham", "city": "new york", "lat": 40.7530, "lng": -73.9932, "rating": 4.2, "website": "https://www.wyndhamhotels.com/wyndham/new-york-new-york/the-new-yorker-hotel/overview" },
+  { "id": "ny-sofitel", "name": "Sofitel New York", "programId": "accor", "city": "new york", "lat": 40.7560, "lng": -73.9815, "rating": 4.5, "website": "https://www.sofitel-new-york.com/" }
+]

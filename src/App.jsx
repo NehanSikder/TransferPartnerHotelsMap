@@ -1,9 +1,29 @@
-import { getCards } from './domain/catalog.js'
+import { useState } from 'react'
+import CardSelector from './components/CardSelector.jsx'
+import CitySearch from './components/CitySearch.jsx'
+import HotelList from './components/HotelList.jsx'
+import { resolveProgramIds, programName } from './domain/resolve.js'
+import { getHotelProvider } from './providers/index.js'
 
-// Commit 1 sanity view: prove the data model loads in the browser.
-// Replaced by the real card selector + map in later commits.
+const provider = getHotelProvider()
+
 export default function App() {
-  const cards = getCards()
+  const [cardIds, setCardIds] = useState([])
+  const [cityKey, setCityKey] = useState('')
+  const [hotels, setHotels] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [activeId, setActiveId] = useState(null)
+
+  const programIds = resolveProgramIds(cardIds)
+  const canSearch = cardIds.length > 0 && cityKey && !loading
+
+  async function search() {
+    setLoading(true)
+    const results = await provider.search({ cityKey, programIds })
+    setHotels(results)
+    setLoading(false)
+  }
+
   return (
     <main className="container">
       <header>
@@ -13,17 +33,33 @@ export default function App() {
         </p>
       </header>
 
-      <section>
-        <h2>Supported cards ({cards.length})</h2>
-        <ul className="card-list">
-          {cards.map((c) => (
-            <li key={c.id}>
-              <strong>{c.name}</strong>
-              <span className="muted"> · {c.issuer} · earns {c.currencyName}</span>
-            </li>
+      <CardSelector selected={cardIds} onChange={setCardIds} />
+      <CitySearch value={cityKey} onChange={setCityKey} />
+
+      {programIds.length > 0 && (
+        <p className="programs">
+          Reaches:{' '}
+          {programIds.map((id) => (
+            <span key={id} className="pill">{programName(id)}</span>
           ))}
-        </ul>
-      </section>
+        </p>
+      )}
+
+      <button className="search-btn" disabled={!canSearch} onClick={search}>
+        {loading ? 'Searching…' : 'Find hotels'}
+      </button>
+
+      {hotels && (
+        <section className="results">
+          <h2>{hotels.length} hotel{hotels.length === 1 ? '' : 's'}</h2>
+          <HotelList
+            hotels={hotels}
+            activeId={activeId}
+            onHover={setActiveId}
+            onSelect={setActiveId}
+          />
+        </section>
+      )}
     </main>
   )
 }
