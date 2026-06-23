@@ -32,7 +32,7 @@ export default function App() {
   return (
     <main className="container">
       <header>
-        <h1>TransferPartnerHotelsMap</h1>
+        <h1>Transfer Partner Hotels Map</h1>
         <p className="tagline">
           Hotels your credit card's points transfer partners support — on a map.
         </p>
