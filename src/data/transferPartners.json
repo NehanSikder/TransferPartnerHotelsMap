@@ -1,0 +1,21 @@
+[
+  { "currencyId": "bilt", "hotelProgramId": "hyatt" },
+  { "currencyId": "bilt", "hotelProgramId": "ihg" },
+  { "currencyId": "bilt", "hotelProgramId": "marriott" },
+
+  { "currencyId": "amex-mr", "hotelProgramId": "hilton" },
+  { "currencyId": "amex-mr", "hotelProgramId": "marriott" },
+  { "currencyId": "amex-mr", "hotelProgramId": "choice" },
+
+  { "currencyId": "chase-ur", "hotelProgramId": "hyatt" },
+  { "currencyId": "chase-ur", "hotelProgramId": "ihg" },
+  { "currencyId": "chase-ur", "hotelProgramId": "marriott" },
+
+  { "currencyId": "citi-typ", "hotelProgramId": "choice" },
+  { "currencyId": "citi-typ", "hotelProgramId": "wyndham" },
+  { "currencyId": "citi-typ", "hotelProgramId": "accor" },
+
+  { "currencyId": "capone", "hotelProgramId": "choice" },
+  { "currencyId": "capone", "hotelProgramId": "wyndham" },
+  { "currencyId": "capone", "hotelProgramId": "accor" }
+]

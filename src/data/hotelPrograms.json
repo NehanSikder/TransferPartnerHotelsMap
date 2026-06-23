@@ -1,0 +1,30 @@
+{
+  "hyatt": {
+    "name": "World of Hyatt",
+    "brands": ["Park Hyatt", "Grand Hyatt", "Hyatt Regency", "Andaz", "Thompson", "Hyatt Centric", "Hyatt Place", "Hyatt House", "Alila"]
+  },
+  "ihg": {
+    "name": "IHG One Rewards",
+    "brands": ["InterContinental", "Kimpton", "Hotel Indigo", "Crowne Plaza", "Holiday Inn", "voco", "Regent", "Six Senses"]
+  },
+  "marriott": {
+    "name": "Marriott Bonvoy",
+    "brands": ["Ritz-Carlton", "St. Regis", "W Hotels", "JW Marriott", "Westin", "Sheraton", "Le Meridien", "Marriott", "Renaissance", "Autograph Collection", "Courtyard"]
+  },
+  "hilton": {
+    "name": "Hilton Honors",
+    "brands": ["Waldorf Astoria", "Conrad", "Hilton", "Canopy", "Curio", "DoubleTree", "Hampton", "Embassy Suites"]
+  },
+  "choice": {
+    "name": "Choice Privileges",
+    "brands": ["Cambria", "Ascend", "Comfort Inn", "Quality Inn", "Clarion", "Sleep Inn"]
+  },
+  "wyndham": {
+    "name": "Wyndham Rewards",
+    "brands": ["Wyndham Grand", "Wyndham", "Dolce", "La Quinta", "Ramada", "Days Inn"]
+  },
+  "accor": {
+    "name": "Accor Live Limitless",
+    "brands": ["Raffles", "Fairmont", "Sofitel", "Pullman", "Novotel", "MGallery", "Mercure"]
+  }
+}

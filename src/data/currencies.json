@@ -1,0 +1,7 @@
+{
+  "bilt": { "name": "Bilt Rewards" },
+  "amex-mr": { "name": "Amex Membership Rewards" },
+  "chase-ur": { "name": "Chase Ultimate Rewards" },
+  "citi-typ": { "name": "Citi ThankYou Points" },
+  "capone": { "name": "Capital One Miles" }
+}

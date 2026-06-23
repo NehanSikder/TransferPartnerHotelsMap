@@ -1,0 +1,6 @@
+{
+  "san francisco": { "label": "San Francisco, CA", "lat": 37.7749, "lng": -122.4194 },
+  "new york": { "label": "New York, NY", "lat": 40.7128, "lng": -74.006 },
+  "chicago": { "label": "Chicago, IL", "lat": 41.8781, "lng": -87.6298 },
+  "los angeles": { "label": "Los Angeles, CA", "lat": 34.0522, "lng": -118.2437 }
+}

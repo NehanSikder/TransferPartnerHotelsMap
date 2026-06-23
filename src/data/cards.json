@@ -1,0 +1,9 @@
+{
+  "bilt-mastercard": { "name": "Bilt Mastercard", "issuer": "Bilt", "currencyId": "bilt" },
+  "amex-platinum": { "name": "Amex Platinum", "issuer": "American Express", "currencyId": "amex-mr" },
+  "amex-gold": { "name": "Amex Gold", "issuer": "American Express", "currencyId": "amex-mr" },
+  "chase-sapphire-preferred": { "name": "Chase Sapphire Preferred", "issuer": "Chase", "currencyId": "chase-ur" },
+  "chase-sapphire-reserve": { "name": "Chase Sapphire Reserve", "issuer": "Chase", "currencyId": "chase-ur" },
+  "citi-strata-premier": { "name": "Citi Strata Premier", "issuer": "Citi", "currencyId": "citi-typ" },
+  "capone-venture-x": { "name": "Capital One Venture X", "issuer": "Capital One", "currencyId": "capone" }
+}
